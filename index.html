@@ -1,1 +1,49 @@
-"Hello World" 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Year Countdown</title>
+</head>
+<body>
+    <h1>New Year Countdown</h1>
+    <div id="countdown"></div>
+    <script>
+        // Set the date and time of the New Year's Eve
+        const newYear = new Date("December 31, 2024 00:00:00");
+
+        // Get the current date and time
+        const now = new Date();
+
+        // Calculate the difference between the two dates in milliseconds
+        const diff = newYear - now;
+
+        // Convert the difference to seconds
+        const seconds = Math.floor(diff / 1000);
+
+        // Set the interval for the countdown (1 second)
+        const interval = setInterval(function() {
+            // Calculate the number of days, hours, minutes, and seconds
+            const days = Math.floor(seconds / (60 * 60 * 24));
+            const hours = Math.floor((seconds % (60 * 60 * 24)) / (60 * 60));
+            const minutes = Math.floor((seconds % (60 * 60)) / 60);
+            const remainingSeconds = seconds % 60;
+
+            // Update the countdown timer
+            document.getElementById("countdown").innerHTML = `
+                <div>${days} days</div>
+                <div>${hours} hours</div>
+                <div>${minutes} minutes</div>
+                <div>${remainingSeconds} seconds</div>
+            `;
+
+            // Decrement the seconds
+            seconds--;
+
+            // If the countdown is over, clear the interval and display a message
+            if (seconds < 0) {
+                clearInterval(interval);
+                document.getElementById("countdown").innerHTML = "<div>Happy New Year!</div>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
