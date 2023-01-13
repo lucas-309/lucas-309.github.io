@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>New Year Countdown</title>
-</head>
-<body>
-    <h1>New Year Countdown</h1>
-    <div id="countdown"></div>
+  <head>
+    <style>
+      .pentagon {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+      .coin {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: silver;
+      }
+    </style>
     <script>
-        // Set the date and time of the New Year's Eve
-        const newYear = new Date("December 31, 2024 00:00:00");
+      let angle = 0;
+      let topThreeAngle = 0;
+      let pentagon = document.querySelector(".pentagon");
+      let topThree = document.querySelectorAll(".top-three");
 
-        // Get the current date and time
-        const now = new Date();
+      function rotatePentagon() {
+        angle += 72;
+        pentagon.style.transform = `rotate(${angle}deg)`;
+      }
 
-        // Calculate the difference between the two dates in milliseconds
-        const diff = newYear - now;
-
-        // Convert the difference to seconds
-        const seconds = Math.floor(diff / 1000);
-
-        // Set the interval for the countdown (1 second)
-        const interval = setInterval(function() {
-            // Calculate the number of days, hours, minutes, and seconds
-            const days = Math.floor(seconds / (60 * 60 * 24));
-            const hours = Math.floor((seconds % (60 * 60 * 24)) / (60 * 60));
-            const minutes = Math.floor((seconds % (60 * 60)) / 60);
-            const remainingSeconds = seconds % 60;
-
-            // Update the countdown timer
-            document.getElementById("countdown").innerHTML = `
-                <div>${days} days</div>
-                <div>${hours} hours</div>
-                <div>${minutes} minutes</div>
-                <div>${remainingSeconds} seconds</div>
-            `;
-
-            // Decrement the seconds
-            seconds--;
-
-            // If the countdown is over, clear the interval and display a message
-            if (seconds < 0) {
-                clearInterval(interval);
-                document.getElementById("countdown").innerHTML = "<div>Happy New Year!</div>";
-            }
-        }, 1000);
+      function rotateTopThree() {
+        topThreeAngle += 72;
+        topThree.forEach(coin => {
+          coin.style.transform = `rotate(${topThreeAngle}deg)`;
+        });
+      }
     </script>
-</body>
+  </head>
+  <body>
+    <div class="pentagon">
+      <div class="coin top-three"></div>
+      <div class="coin top-three"></div>
+      <div class="coin top-three"></div>
+      <div class="coin"></div>
+      <div class="coin"></div>
+    </div>
+    <button onclick="rotatePentagon()">Rotate Pentagon</button>
+    <button onclick="rotateTopThree()">Rotate Top Three</button>
+  </body>
 </html>
+
+
+
+
