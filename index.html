@@ -1,53 +1,88 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <title>Professional Personal Website</title>
     <style>
-      .pentagon {
-        position: relative;
-        width: 200px;
-        height: 200px;
-        margin: 0 auto;
-      }
-      .coin {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: silver;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 10px;
+            background-image: url('https://images.pexels.com/photos/743986/pexels-photo-743986.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        h1, h2 {
+            color: #444;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255,255,255,0.8);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .profile .profile-text {
+            margin-left: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .profile-image {
+            border-radius: 50%;
+            width: 400px;
+        }	
+	.contact-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .contact-icons img {
+            width: 100px;
+            height: 100px;
+        }
     </style>
-    <script>
-      let angle = 0;
-      let topThreeAngle = 0;
-      let pentagon = document.querySelector(".pentagon");
-      let topThree = document.querySelectorAll(".top-three");
-
-      function rotatePentagon() {
-        angle += 72;
-        pentagon.style.transform = `rotate(${angle}deg)`;
-      }
-
-      function rotateTopThree() {
-        topThreeAngle += 72;
-        topThree.forEach(coin => {
-          coin.style.transform = `rotate(${topThreeAngle}deg)`;
-        });
-      }
-    </script>
-  </head>
-  <body>
-    <div class="pentagon">
-      <div class="coin top-three"></div>
-      <div class="coin top-three"></div>
-      <div class="coin top-three"></div>
-      <div class="coin"></div>
-      <div class="coin"></div>
+</head>
+<body>
+    <h1>Lucas He's Personal Page </h1>
+    <h2>Highlighted Pictures<h2>
+    <div class="grid">
+        <img src="cachedImage.PNG" alt="Image 1">
+        <img src="cachedImage2.PNG" alt="Image 2">
+        <img src="IMG_3832.jpg" alt="Image 3">
+        <img src="IMG_6655.jpg" alt="Image 4">
+        <img src="IMG_6798.jpg" alt="Image 5">
+        <img src="IMG_2930.jpg" alt="Image 6">
     </div>
-    <button onclick="rotatePentagon()">Rotate Pentagon</button>
-    <button onclick="rotateTopThree()">Rotate Top Three</button>
-  </body>
+
+    <h2>About Me</h2>
+    <div class="profile">
+        <img class="profile-image" src="IMG_1290.jpg" alt="Your profile image">
+        <div class="profile-text">
+            <p>Meet Lucas, a high school junior with a deep-seated passion for the logical elegance and creative problem-solving offered by mathematics. With an innate ability to abstract complex problems and derive innovative solutions, Lucas has always been drawn towards the universal language of math.</p>
+	<p>I love the reaction in people’s faces when they ask me what major I want to pursue, and I respond with “math.” Immediately, they stop whatever they were doing, turn to me with an unbelieving face, followed by a bewildered “Are you serious?”. When I respond with “Yes,” they inundate me with questions about what I will do with a degree in math, what will I do for a living, and just in general, why math? To be honest, I haven’t answered many of these questions myself, but ever since my first math competition, I knew the feeling of accomplishment after completing a difficult problem was just what I needed in my life.<p>
+    
+        </div>
+    </div>
+    <h2> Contact Me! <h2>
+    <div class="contact-icons">
+        <a href="https://github.com/lucas-309" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
+        </a>
+        <a href="mailto:lucashe309@gmail.com">
+            <img src="https://static-00.iconduck.com/assets.00/gmail-icon-512x511-fih5xfbp.png" alt="Email Logo">
+        </a>
+        <a href="https://www.linkedin.com/in/lucas-he-9971b9239/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/800px-LinkedIn_logo_initials.png" alt="LinkedIn Logo">
+        </a>
+    </div>
+    <a href = "lucashe309@gmail.com">
+    
+</body>
 </html>
-
-
-
-
