@@ -28,23 +28,30 @@ const projects: Project[] = [
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div class="container">
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-      <span id="theme-icon">🌙</span>
-    </button>
-
-    <header>
-      <h1>Lucas He</h1>
-      <h2>CS Sophomore @ Cornell</h2>
-      <p class="subtitle">High Performance Computing | Systems | AI/ML</p>
-      
-      <div class="links">
-        <a href="#about">About</a>
+    <nav class="navbar">
+      <div class="nav-brand">Lucas He</div>
+      <div class="nav-items">
+        <a href="#home">Home</a>
+        <a href="#cv" class="disabled-link" title="Coming Soon">CV</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+          <span id="theme-icon">🌙</span>
+        </button>
       </div>
-    </header>
+    </nav>
 
     <main>
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <h1>Lucas He</h1>
+          <h2>CS Sophomore @ Cornell</h2>
+          <p class="subtitle">High Performance Computing | Systems | AI/ML</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">My projects &rarr;</a>
+          </div>
+        </div>
+      </section>
+
       <section id="about" class="about">
         <h3>About Me</h3>
         <p>
@@ -88,6 +95,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         </div>
       </section>
     </main>
+
+    <footer>
+      <p>&copy; ${new Date().getFullYear()} Lucas He. All Rights Reserved.</p>
+    </footer>
   </div>
 `
 
