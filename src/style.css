@@ -16,21 +16,51 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  place-items: flex-start;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  padding-top: 2rem;
 }
 
 #app {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  text-align: left;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+header {
   text-align: center;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #888;
+  margin: 0;
+  font-weight: 500;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.links {
+  margin-top: 1.5rem;
 }
 
 .links a {
@@ -38,9 +68,72 @@ h1 {
   color: #646cff;
   text-decoration: inherit;
   margin: 0 1rem;
+  transition: color 0.2s;
 }
 .links a:hover {
   color: #535bf2;
+}
+
+section h3 {
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #eee;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: #333;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: #646cff;
+}
+
+.project-card h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2em;
+}
+
+.project-card p {
+  color: #ccc;
+  font-size: 0.95em;
+  margin-bottom: 1rem;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: #444;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8em;
+  color: #aaa;
+}
+
+.project-link {
+  color: #646cff;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.project-link:hover {
+  text-decoration: underline;
 }
 
 @media (prefers-color-scheme: light) {
@@ -50,5 +143,23 @@ h1 {
   }
   .links a:hover {
     color: #747bff;
+  }
+  .project-card {
+    background: #f9f9f9;
+    border-color: #eee;
+  }
+  .project-card h4 {
+    color: #213547;
+  }
+  .project-card p {
+    color: #555;
+  }
+  .tag {
+    background: #eee;
+    color: #666;
+  }
+  section h3 {
+    border-bottom-color: #eee;
+    color: #222;
   }
 }
