@@ -56,7 +56,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <ul>
           <li>GitHub: <a href="https://github.com/lucas-309" target="_blank" rel="noreferrer">github.com/lucas-309</a></li>
           <li>LinkedIn: <a href="https://www.linkedin.com/in/lucashe309" target="_blank" rel="noreferrer">linkedin.com/in/lucashe309</a></li>
-          <li>Email: <a href="mailto:lucas.he@cornell.edu">lucas.he@cornell.edu</a></li>
+          <li>Email: <a href="mailto:lucashe309@gmail.com">lucashe309@gmail.com</a></li>
         </ul>
       </section>
     </main>
