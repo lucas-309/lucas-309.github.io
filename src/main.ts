@@ -1,127 +1,68 @@
 import './style.css'
 
-interface Project {
-  name: string;
-  description: string;
-  link?: string;
-  tags: string[];
-}
-
-const projects: Project[] = [
-  {
-    name: "Personal Website",
-    description: "This website! Built with Vite and TypeScript.",
-    link: "https://github.com/lucas-309/lucas-309.github.io",
-    tags: ["TypeScript", "Vite", "Web"]
-  },
-  {
-    name: "HPC Experiments",
-    description: "Exploring parallel computing and low-level optimizations.",
-    tags: ["C++", "CUDA", "MPI"]
-  },
-  {
-    name: "Machine Learning Ops",
-    description: "Infrastructure and tooling for ML pipelines.",
-    tags: ["Python", "Docker", "Kubernetes"]
-  }
-];
-
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div class="container">
-    <nav class="navbar">
-      <div class="nav-brand">Lucas He</div>
-      <div class="nav-items">
-        <a href="#home">Home</a>
-        <a href="#cv" class="disabled-link" title="Coming Soon">CV</a>
-        <a href="#projects">Projects</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-          <span id="theme-icon">🌙</span>
-        </button>
-      </div>
-    </nav>
+  <div class="page">
+    <header class="site-header">
+      <h1>Lucas He</h1>
+      <p class="subtitle">Cornell CS · Cofounder & CTO at Drip (YC P26)</p>
+      <nav class="nav">
+        <a href="#about">about</a>
+        <a href="#work">work</a>
+        <a href="#projects">projects</a>
+        <a href="#contact">contact</a>
+      </nav>
+    </header>
 
     <main>
-      <section id="home" class="hero">
-        <div class="hero-content">
-          <h1>Lucas He</h1>
-          <h2>CS Sophomore @ Cornell</h2>
-          <p class="subtitle">High Performance Computing | Systems | AI/ML</p>
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">My projects &rarr;</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="about">
-        <h3>About Me</h3>
+      <section id="about" class="card">
+        <h2>About</h2>
         <p>
-          I'm a CS student at Cornell University with a deep interest in low-level systems and AI.
-          Currently exploring High Performance Computing (HPC) and ML infrastructure.
-          I love the intersection of hardware and software.
+          I build backend systems and product infrastructure for API/AI companies.
+          Right now I’m focused on reliability, payments, billing, and startup execution.
+        </p>
+        <p>
+          Born in Hong Kong, raised in Shenzhen, now at Cornell. I care about practical,
+          high-leverage engineering over fluffy complexity.
         </p>
       </section>
 
-      <section id="projects" class="projects">
-        <h3>Projects & Interests</h3>
-        <div class="project-grid">
-          ${projects.map(project => `
-            <div class="project-card">
-              <h4>${project.name}</h4>
-              <p>${project.description}</p>
-              <div class="tags">
-                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-              </div>
-              ${project.link ? `<a href="${project.link}" target="_blank" class="project-link">View Code &rarr;</a>` : ''}
-            </div>
-          `).join('')}
-        </div>
+      <section id="work" class="card">
+        <h2>Current Work</h2>
+        <ul>
+          <li>
+            <strong>Drip (YC P26)</strong> — Cofounder & CTO
+            <br />
+            Usage-to-cash control plane for API/AI businesses:
+            <span class="mono">event → entitlement gate → charge → settlement → reconciliation</span>
+          </li>
+          <li>
+            Working on production hardening across auth boundaries, usage metering,
+            reconciliation, and webhook reliability.
+          </li>
+        </ul>
       </section>
 
-      <section id="contact" class="contact">
-        <h3>Contact Me</h3>
-        <div class="contact-grid">
-          <a href="https://github.com/lucas-309" target="_blank" class="contact-item">
-            <span class="contact-icon">💻</span>
-            <span>GitHub</span>
-          </a>
-          <a href="mailto:lucashe309@gmail.com" class="contact-item">
-            <span class="contact-icon">✉️</span>
-            <span>Email</span>
-          </a>
-          <a href="https://www.linkedin.com/in/lucas-he-9971b9239/" target="_blank" class="contact-item">
-            <span class="contact-icon">💼</span>
-            <span>LinkedIn</span>
-          </a>
-        </div>
+      <section id="projects" class="card">
+        <h2>Selected Projects</h2>
+        <ul>
+          <li><strong>Drip SDK + dashboard work</strong> — developer experience + secure billing primitives</li>
+          <li><strong>Agent tooling</strong> — Discord-based assistants with retrieval/memory pipelines</li>
+          <li><strong>Systems/infra experiments</strong> — queueing, fault handling, and observability</li>
+        </ul>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <ul>
+          <li>GitHub: <a href="https://github.com/lucas-309" target="_blank" rel="noreferrer">github.com/lucas-309</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/lucashe309" target="_blank" rel="noreferrer">linkedin.com/in/lucashe309</a></li>
+          <li>Email: <a href="mailto:lucas.he@cornell.edu">lucas.he@cornell.edu</a></li>
+        </ul>
       </section>
     </main>
 
     <footer>
-      <p>&copy; ${new Date().getFullYear()} Lucas He. All Rights Reserved.</p>
+      <small>Last updated: March 2026</small>
     </footer>
   </div>
 `
-
-// Theme Toggling Logic
-const themeToggleBtn = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-const htmlElement = document.documentElement;
-
-// Check local storage or system preference
-const savedTheme = localStorage.getItem('theme');
-const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-if (savedTheme === 'light' || (!savedTheme && !systemPrefersDark)) {
-  htmlElement.classList.add('light');
-  themeIcon!.textContent = '☀️';
-} else {
-  htmlElement.classList.remove('light');
-  themeIcon!.textContent = '🌙';
-}
-
-themeToggleBtn?.addEventListener('click', () => {
-  htmlElement.classList.toggle('light');
-  const isLight = htmlElement.classList.contains('light');
-  themeIcon!.textContent = isLight ? '☀️' : '🌙';
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
-});
