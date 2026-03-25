@@ -110,26 +110,6 @@ main {
   display: none;
 }
 
-.resume-button {
-  display: inline-block;
-  margin-top: 0.55rem;
-  padding: 0.5rem 0.85rem;
-  border-radius: 8px;
-  background: #0ea5e9;
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.resume-button:hover {
-  background: #0284c7;
-}
-
-.resume-missing {
-  color: #64748b;
-  margin: 0.5rem 0 0;
-  font-size: 0.9rem;
-}
 
 h2 {
   margin: 0 0 0.5rem;
@@ -177,5 +157,23 @@ footer {
 
   .profile-card > div:first-child {
     justify-self: center;
+  }
+}
+
+.cv-section {
+  padding-bottom: 1.2rem;
+}
+
+.cv-embed {
+  width: 100%;
+  min-height: 620px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+@media (max-width: 680px) {
+  .cv-embed {
+    min-height: 480px;
   }
 }

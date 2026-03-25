@@ -9,6 +9,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <a href="#about">about</a>
         <a href="#work">work</a>
         <a href="#projects">projects</a>
+        <a href="#cv">cv</a>
         <a href="#contact">contact</a>
       </nav>
     </header>
@@ -28,12 +29,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <p>
             Born in Hong Kong, raised in Shenzhen, now at Cornell. I care about practical,
             high-leverage engineering over fluffy complexity.
-          </p>
-          <a id="resume-link" href="/resume.pdf" class="resume-button" download>
-            Download Resume
-          </a>
-          <p id="resume-missing" class="resume-missing" hidden>
-            Resume upload is pending. Ping me and I can share the latest PDF.
           </p>
         </div>
       </section>
@@ -63,6 +58,17 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         </ul>
       </section>
 
+      <section id="cv" class="card cv-section">
+        <h2>CV</h2>
+        <p>View my latest CV inline below:</p>
+        <object data="/resume.pdf" type="application/pdf" class="cv-embed">
+          <p>
+            PDF preview unavailable in this browser.
+            <a href="/resume.pdf" target="_blank" rel="noreferrer">Open CV in new tab</a>.
+          </p>
+        </object>
+      </section>
+
       <section id="contact" class="card">
         <h2>Contact</h2>
         <ul>
@@ -81,6 +87,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
 const photo = document.getElementById('profile-photo') as HTMLImageElement | null
 const photoFallback = document.getElementById('profile-photo-fallback') as HTMLDivElement | null
+
 if (photo && photoFallback) {
   photo.addEventListener('error', () => {
     photo.style.display = 'none'
@@ -89,20 +96,4 @@ if (photo && photoFallback) {
   photo.addEventListener('load', () => {
     photoFallback.hidden = true
   })
-}
-
-const resumeLink = document.getElementById('resume-link') as HTMLAnchorElement | null
-const resumeMissing = document.getElementById('resume-missing') as HTMLParagraphElement | null
-if (resumeLink && resumeMissing) {
-  fetch('/resume.pdf', { method: 'HEAD' })
-    .then((res) => {
-      if (!res.ok) {
-        resumeLink.hidden = true
-        resumeMissing.hidden = false
-      }
-    })
-    .catch(() => {
-      resumeLink.hidden = true
-      resumeMissing.hidden = false
-    })
 }
