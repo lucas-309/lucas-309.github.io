@@ -16,7 +16,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <main>
       <section id="about" class="card profile-card">
         <div class="profile-photo-wrap">
-          <img id="profile-photo" src="/profile.svg" alt="Lucas He profile photo" />
+          <img id="profile-photo" src="/profile.png" alt="Lucas He profile photo" />
           <div id="profile-photo-fallback" class="profile-photo-fallback" aria-hidden="true">LH</div>
         </div>
         <div>
