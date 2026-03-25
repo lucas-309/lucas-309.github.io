@@ -14,16 +14,28 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </header>
 
     <main>
-      <section id="about" class="card">
-        <h2>About</h2>
-        <p>
-          I build backend systems and product infrastructure for API/AI companies.
-          Right now I’m focused on reliability, payments, billing, and startup execution.
-        </p>
-        <p>
-          Born in Hong Kong, raised in Shenzhen, now at Cornell. I care about practical,
-          high-leverage engineering over fluffy complexity.
-        </p>
+      <section id="about" class="card profile-card">
+        <div class="profile-photo-wrap">
+          <img id="profile-photo" src="/profile.svg" alt="Lucas He profile photo" />
+          <div id="profile-photo-fallback" class="profile-photo-fallback" aria-hidden="true">LH</div>
+        </div>
+        <div>
+          <h2>Hi, I'm Lucas</h2>
+          <p>
+            I build backend systems and product infrastructure for API/AI companies.
+            Right now I’m focused on reliability, payments, billing, and startup execution.
+          </p>
+          <p>
+            Born in Hong Kong, raised in Shenzhen, now at Cornell. I care about practical,
+            high-leverage engineering over fluffy complexity.
+          </p>
+          <a id="resume-link" href="/resume.pdf" class="resume-button" download>
+            Download Resume
+          </a>
+          <p id="resume-missing" class="resume-missing" hidden>
+            Resume upload is pending. Ping me and I can share the latest PDF.
+          </p>
+        </div>
       </section>
 
       <section id="work" class="card">
@@ -66,3 +78,31 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </footer>
   </div>
 `
+
+const photo = document.getElementById('profile-photo') as HTMLImageElement | null
+const photoFallback = document.getElementById('profile-photo-fallback') as HTMLDivElement | null
+if (photo && photoFallback) {
+  photo.addEventListener('error', () => {
+    photo.style.display = 'none'
+    photoFallback.hidden = false
+  })
+  photo.addEventListener('load', () => {
+    photoFallback.hidden = true
+  })
+}
+
+const resumeLink = document.getElementById('resume-link') as HTMLAnchorElement | null
+const resumeMissing = document.getElementById('resume-missing') as HTMLParagraphElement | null
+if (resumeLink && resumeMissing) {
+  fetch('/resume.pdf', { method: 'HEAD' })
+    .then((res) => {
+      if (!res.ok) {
+        resumeLink.hidden = true
+        resumeMissing.hidden = false
+      }
+    })
+    .catch(() => {
+      resumeLink.hidden = true
+      resumeMissing.hidden = false
+    })
+}
