@@ -60,13 +60,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
       <section id="cv" class="card cv-section">
         <h2>CV</h2>
-        <p>View my latest CV inline below:</p>
-        <object data="/resume.pdf" type="application/pdf" class="cv-embed">
-          <p>
-            PDF preview unavailable in this browser.
-            <a href="/resume.pdf" target="_blank" rel="noreferrer">Open CV in new tab</a>.
-          </p>
-        </object>
+        <p>
+          Open my CV in a new tab:
+          <a href="/resume.pdf" target="_blank" rel="noreferrer">Open CV (PDF)</a>
+        </p>
       </section>
 
       <section id="contact" class="card">
