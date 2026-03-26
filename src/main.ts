@@ -9,7 +9,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <a href="#about">about</a>
         <a href="#work">work</a>
         <a href="#projects">projects</a>
-        <a href="#cv">cv</a>
+        <a href="/resume.pdf" target="_blank" rel="noreferrer">cv</a>
         <a href="#contact">contact</a>
       </nav>
     </header>
@@ -56,14 +56,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
           <li><strong>Agent tooling</strong> — Discord-based assistants with retrieval/memory pipelines</li>
           <li><strong>Systems/infra experiments</strong> — queueing, fault handling, and observability</li>
         </ul>
-      </section>
-
-      <section id="cv" class="card cv-section">
-        <h2>CV</h2>
-        <p>
-          Open my CV in a new tab:
-          <a href="/resume.pdf" target="_blank" rel="noreferrer">Open CV (PDF)</a>
-        </p>
       </section>
 
       <section id="contact" class="card">
