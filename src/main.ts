@@ -4,6 +4,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div class="page">
     <header class="site-header">
       <div class="hero">
+        <img src="/profile.png" alt="Lucas He" class="avatar" />
         <div>
           <h1>Lucas He</h1>
           <p class="subtitle">Cornell CS · Cofounder & CTO at Drip (YC P26)</p>
