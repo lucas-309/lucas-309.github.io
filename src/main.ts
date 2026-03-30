@@ -77,6 +77,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
     <footer>
       <small>Last updated: March 2026</small>
+      <small>Built by: <a href="/meepus/">Meepus</a></small>
     </footer>
   </div>
 `
