@@ -121,6 +121,9 @@ a:hover {
 footer {
   margin-top: 1rem;
   color: #64748b;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 @media (max-width: 640px) {
